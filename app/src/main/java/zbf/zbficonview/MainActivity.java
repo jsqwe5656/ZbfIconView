@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity
         FrameLayout root = (FrameLayout) findViewById(R.id.frame);
 //        root.addView(new MyCircleView(this));
         root.addView(new MyRegionView(this));
-
+        getLoaderManager().initLoader(0,null,new DataLoaderCallback());
 
     }
 }
