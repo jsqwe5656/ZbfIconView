@@ -11,11 +11,13 @@ import zbf.zbficonview.view.MyCircleView;
 import zbf.zbficonview.view.MyQuadView;
 import zbf.zbficonview.view.MyRegionView;
 import zbf.zbficonview.view.MyTouchView;
+import zbf.zbficonview.view.MyWaveView;
 
 public class MainActivity extends AppCompatActivity
 {
     Button reset;
     MyTouchView touchView;
+    MyWaveView waveView;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,8 +38,11 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 touchView.reset();
+                waveView.startAnim();
             }
         });
+
+        waveView = (MyWaveView) findViewById(R.id.waveview);
 
 
     }
