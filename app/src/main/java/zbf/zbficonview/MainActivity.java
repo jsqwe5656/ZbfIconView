@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 touchView.reset();
-                waveView.startAnim();
+
             }
         });
 
         waveView = (MyWaveView) findViewById(R.id.waveview);
-
+        waveView.startAnim();
 
     }
 }

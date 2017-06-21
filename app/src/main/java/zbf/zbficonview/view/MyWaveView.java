@@ -8,12 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * 使用path的rQuadTo来绘制波浪的视图
+ * 使用path的rQuadTo来绘制波浪的视图(单纯的滚动波浪。并非真正的水波纹)
  * Created by zbf on 2017/6/20.
  */
 public class MyWaveView extends View
@@ -55,9 +54,11 @@ public class MyWaveView extends View
              i+=mItemWaveLength)
         {
             //画出波长中的前半个波形
-            mPath.rQuadTo(halfWaveLen/2 + 10,-50,halfWaveLen + 15,0);
+//            mPath.rQuadTo(halfWaveLen/2 + 11,-50,halfWaveLen + 21,0);
+            mPath.rQuadTo(halfWaveLen/2,-50,halfWaveLen,0);
             //后半个
-            mPath.rQuadTo(halfWaveLen/2 + 20,50,halfWaveLen + 25,0);
+//            mPath.rQuadTo(halfWaveLen/2 + 41,50,halfWaveLen + 45,0);
+            mPath.rQuadTo(halfWaveLen/2,50,halfWaveLen ,0);
         }
 
         mPath.lineTo(getWidth(),getHeight());
