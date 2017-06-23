@@ -25,7 +25,7 @@ public class MyCanvasTestView extends View
 
         mPaint = new Paint();
         mPaint.setColor(Color.RED);
-        mBitmap = Bitmap.createBitmap(500,500,Bitmap.Config.ARGB_8888);
+        mBitmap = Bitmap.createBitmap(5000,500,Bitmap.Config.ARGB_8888);
         mBmpCanvas = new Canvas(mBitmap);
 
     }
@@ -38,7 +38,10 @@ public class MyCanvasTestView extends View
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
+        mPaint.setTextSize(100);
+        mBmpCanvas.drawText("zbf is the best",100,100,mPaint);
 
+        canvas.drawBitmap(mBitmap,0,0,mPaint);
     }
 
     /**

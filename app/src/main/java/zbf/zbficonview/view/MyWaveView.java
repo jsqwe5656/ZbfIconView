@@ -85,7 +85,7 @@ public class MyWaveView extends View
             @Override
             public void onAnimationUpdate(ValueAnimator animation)
             {
-                dx = (int) animation.getAnimatedValue();
+                dx = (int)Integer.valueOf(animation.getAnimatedValue().toString());
                 postInvalidate();
             }
         });

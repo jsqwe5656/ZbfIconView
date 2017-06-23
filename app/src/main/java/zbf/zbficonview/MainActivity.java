@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import zbf.zbficonview.view.MyCanvasTestView;
 import zbf.zbficonview.view.MyCircleView;
 import zbf.zbficonview.view.MyQuadView;
 import zbf.zbficonview.view.MyRegionView;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         root.addView(new MyRegionView(this));
         getLoaderManager().initLoader(0, null, new DataLoaderCallback());
         root.addView(new MyQuadView(this));
+//        root.addView(new MyCanvasTestView(this,null));
 
         reset = (Button) findViewById(R.id.btn_reset);
         touchView = (MyTouchView) findViewById(R.id.touchview);
