@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout root = (LinearLayout) findViewById(R.id.frame);
+/*        LinearLayout root = (LinearLayout) findViewById(R.id.frame);
 //        root.addView(new MyCircleView(this));
         root.addView(new MyRegionView(this));
         getLoaderManager().initLoader(0, null, new DataLoaderCallback());
-        root.addView(new MyQuadView(this));
+        root.addView(new MyQuadView(this));*/
 //        root.addView(new MyCanvasTestView(this,null));
 
-        reset = (Button) findViewById(R.id.btn_reset);
+/*        reset = (Button) findViewById(R.id.btn_reset);
         touchView = (MyTouchView) findViewById(R.id.touchview);
         reset.setOnClickListener(new View.OnClickListener()
         {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         waveView = (MyWaveView) findViewById(R.id.waveview);
-        waveView.startAnim();
+        waveView.startAnim();*/
 
     }
 }

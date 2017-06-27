@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
     android:orientation="vertical"
     tools:context="zbf.zbficonview.MainActivity">
 
@@ -25,21 +24,27 @@
         android:layout_height="wrap_content"
         android:text="reset"
         />
-<!--    <zbf.zbficonview.view.XfermodeView
+    <!--    <zbf.zbficonview.view.XfermodeView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>-->
+    <zbf.zbficonview.view.RedPointView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>-->
-    <zbf.zbficonview.view.RestoreToCountView
+        android:layout_height="match_parent"
+        />
+
+<!--    <zbf.zbficonview.view.RestoreToCountView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <zbf.zbficonview.view.SaveLayerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <zbf.zbficonview.view.MyCanvasTestView
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp"/>-->
 
-    <zbf.zbficonview.view.MyTouchView
+<!--    <zbf.zbficonview.view.MyTouchView
         android:id="@+id/touchview"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -48,6 +53,6 @@
     <zbf.zbficonview.view.MyWaveView
         android:id="@+id/waveview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"/>-->
 
 </LinearLayout>
