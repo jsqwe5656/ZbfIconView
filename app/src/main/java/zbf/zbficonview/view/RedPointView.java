@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import zbf.zbficonview.R;
@@ -37,6 +38,8 @@ public class RedPointView extends FrameLayout
     private boolean mTouch = false;
 
     private TextView mTipTextView;
+    private ImageView mImageView;
+
 
     public RedPointView(@NonNull Context context)
     {
@@ -69,16 +72,32 @@ public class RedPointView extends FrameLayout
         mPaint.setStyle(Paint.Style.FILL);
 
         mPath = new Path();
-        textViewInit();
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        textViewInit(params);
+        imageViewInit(params);
 
     }
 
     /**
-     * 初始化文字控件
+     * 初始化爆炸效果动画容器
+     * @param params
      */
-    private void textViewInit()
+    private void imageViewInit(LayoutParams params)
     {
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mImageView = new ImageView(getContext());
+        mImageView.setLayoutParams(params);
+        mImageView.setImageResource(R.drawable.tip_anim);
+        mImageView.setVisibility(INVISIBLE);
+        addView(mImageView);
+    }
+
+    /**
+     * 初始化文字控件
+     * @param params
+     */
+    private void textViewInit(LayoutParams params)
+    {
         mTipTextView = new TextView(getContext());
         mTipTextView.setLayoutParams(params);
         mTipTextView.setPadding(10, 10, 10, 10);
@@ -104,8 +123,7 @@ public class RedPointView extends FrameLayout
             canvas.drawPath(mPath, mPaint);
             mTipTextView.setX(mCurPoint.x - mTipTextView.getWidth() / 2);
             mTipTextView.setY(mCurPoint.y - mTipTextView.getHeight() / 2);
-        }
-        else
+        } else
         {
             mTipTextView.setX(mCurPoint.x - mTipTextView.getWidth() / 2);
             mTipTextView.setY(mCurPoint.y - mTipTextView.getHeight() / 2);
@@ -168,10 +186,12 @@ public class RedPointView extends FrameLayout
         float anchorX = (startX + x) / 2;
         float anchorY = (startY + y) / 2;
 
-        float distance = (float) Math.sqrt(Math.pow(y-startY,2)+ Math.pow(x - startX,2));
-        mRadius = DEFAULT_RADIUS - distance/15;
-        if (mRadius<9)
+        float distance = (float) Math.sqrt(Math.pow(y - startY, 2) + Math.pow(x - startX, 2));
+        mRadius = DEFAULT_RADIUS - distance / 15;
+        if (mRadius < 9)
+        {
             mRadius = 9;
+        }
 
         //重置
         mPath.reset();
