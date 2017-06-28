@@ -13,12 +13,14 @@ import zbf.zbficonview.view.MyQuadView;
 import zbf.zbficonview.view.MyRegionView;
 import zbf.zbficonview.view.MyTouchView;
 import zbf.zbficonview.view.MyWaveView;
+import zbf.zbficonview.view.RedPointView;
 
 public class MainActivity extends AppCompatActivity
 {
     Button reset;
     MyTouchView touchView;
     MyWaveView waveView;
+    RedPointView redPointView;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,21 +33,22 @@ public class MainActivity extends AppCompatActivity
         getLoaderManager().initLoader(0, null, new DataLoaderCallback());
         root.addView(new MyQuadView(this));*/
 //        root.addView(new MyCanvasTestView(this,null));
-
-/*        reset = (Button) findViewById(R.id.btn_reset);
-        touchView = (MyTouchView) findViewById(R.id.touchview);
+//        touchView = (MyTouchView) findViewById(R.id.touchview);
+        redPointView = (RedPointView) findViewById(R.id.redpoint);
+        reset = (Button) findViewById(R.id.btn_reset);
         reset.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                touchView.reset();
-
+//                touchView.reset();
+                redPointView.setVisibility(View.VISIBLE);
             }
         });
-
+/*
         waveView = (MyWaveView) findViewById(R.id.waveview);
         waveView.startAnim();*/
+
 
     }
 }

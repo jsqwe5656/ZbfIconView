@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,13 +30,14 @@ public class RedPointView extends FrameLayout
     //与point几乎一致 用于坐标不是整数的情况
     private PointF mStartPoint, mCurPoint;
     //圆的半径
-    private float DEFAULT_RADIUS = 20;
+    private float DEFAULT_RADIUS = 30;
     private float mRadius = DEFAULT_RADIUS;
 
     private Paint mPaint;
     private Path mPath;
 
     private boolean mTouch = false;
+    private boolean isAnimStart = false;
 
     private TextView mTipTextView;
     private ImageView mImageView;
@@ -81,6 +83,7 @@ public class RedPointView extends FrameLayout
 
     /**
      * 初始化爆炸效果动画容器
+     *
      * @param params
      */
     private void imageViewInit(LayoutParams params)
@@ -94,6 +97,7 @@ public class RedPointView extends FrameLayout
 
     /**
      * 初始化文字控件
+     *
      * @param params
      */
     private void textViewInit(LayoutParams params)
@@ -113,7 +117,12 @@ public class RedPointView extends FrameLayout
     {
         canvas.saveLayer(new RectF(0, 0, getWidth(), getHeight()), mPaint, Canvas.ALL_SAVE_FLAG);
 
-        if (mTouch)
+        if (!mTouch || isAnimStart)
+        {
+            mTipTextView.setX(mStartPoint.x - mTipTextView.getWidth() / 2);
+            mTipTextView.setY(mStartPoint.y - mTipTextView.getHeight() / 2);
+        }
+        else
         {
             calculatePath();
             //初始圆的位置
@@ -121,10 +130,6 @@ public class RedPointView extends FrameLayout
             //跟随手指移动圆的位置
             canvas.drawCircle(mCurPoint.x, mCurPoint.y, mRadius, mPaint);
             canvas.drawPath(mPath, mPaint);
-            mTipTextView.setX(mCurPoint.x - mTipTextView.getWidth() / 2);
-            mTipTextView.setY(mCurPoint.y - mTipTextView.getHeight() / 2);
-        } else
-        {
             mTipTextView.setX(mCurPoint.x - mTipTextView.getWidth() / 2);
             mTipTextView.setY(mCurPoint.y - mTipTextView.getHeight() / 2);
         }
@@ -190,7 +195,14 @@ public class RedPointView extends FrameLayout
         mRadius = DEFAULT_RADIUS - distance / 15;
         if (mRadius < 9)
         {
-            mRadius = 9;
+            isAnimStart = true;
+            //取控件中间点
+            mImageView.setX(mCurPoint.x - mTipTextView.getWidth() / 2);
+            mImageView.setY(mCurPoint.y - mTipTextView.getHeight() / 2);
+            mImageView.setVisibility(VISIBLE);
+            ((AnimationDrawable) mImageView.getDrawable()).start();
+
+            mTipTextView.setVisibility(GONE);
         }
 
         //重置
