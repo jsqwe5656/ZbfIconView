@@ -15,12 +15,20 @@
         android:background="@drawable/layer_shape_list"
         android:text="test"/>
 
-    <zbf.zbficonview.view.MyTextView
+<!--    <zbf.zbficonview.view.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:age="young"
         app:header="@mipmap/dog"
         app:headerHeight="300dp"
-        app:headerVisibleHeight="100dp"/>
+        app:headerVisibleHeight="100dp"/>-->
 
+    <zbf.zbficonview.view.DoubleColorRadiaGradientView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <zbf.zbficonview.view.WaveButton
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:text="button"/>
 </LinearLayout>
