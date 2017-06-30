@@ -15,20 +15,102 @@
         android:background="@drawable/layer_shape_list"
         android:text="test"/>
 
-<!--    <zbf.zbficonview.view.MyTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:age="young"
-        app:header="@mipmap/dog"
-        app:headerHeight="300dp"
-        app:headerVisibleHeight="100dp"/>-->
+    <!--    <zbf.zbficonview.view.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:age="young"
+            app:header="@mipmap/dog"
+            app:headerHeight="300dp"
+            app:headerVisibleHeight="100dp"/>-->
 
     <zbf.zbficonview.view.DoubleColorRadiaGradientView
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
+
     <zbf.zbficonview.view.WaveButton
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="button"/>
+
+    <!--    <zbf.zbficonview.viewgroup.MyLineLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff00ff"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ff0000"
+                android:text="第一个"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#00ff00"
+                android:text="第二个"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#0000ff"
+                android:text="第三个"
+                />
+        </zbf.zbficonview.viewgroup.MyLineLayout>-->
+
+    <zbf.zbficonview.viewgroup.MyFlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff00ff"
+        >
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="Welcome"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="IT工程师"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="我真是可以的"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="你觉得呢"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="不要只知道挣钱"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="努力ing"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="I thick i can"
+            android:textColor="#43BBE7"/>
+
+    </zbf.zbficonview.viewgroup.MyFlowLayout>
+
 </LinearLayout>
