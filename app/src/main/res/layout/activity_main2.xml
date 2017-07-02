@@ -112,5 +112,54 @@
             android:textColor="#43BBE7"/>
 
     </zbf.zbficonview.viewgroup.MyFlowLayout>
+    <zbf.zbficonview.viewgroup.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff00ff"
+        >
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="Welcome"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="IT工程师"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="我真是可以的"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="你觉得呢"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="不要只知道挣钱"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="努力ing"
+            android:textColor="#43BBE7"/>
+
+        <TextView
+            style="@style/text_flag_01"
+            android:background="#666666"
+            android:text="I thick i can"
+            android:textColor="#43BBE7"/>
+
+    </zbf.zbficonview.viewgroup.FlowLayout>
 
 </LinearLayout>
