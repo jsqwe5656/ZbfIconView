@@ -65,6 +65,8 @@ public class MyFlowLayout extends ViewGroup
         {
             //循环得到子控件
             View child = getChildAt(i);
+            measureChild(child,widthMeasureSpec,heightMeasureSpec);
+
             //计算每个子空间的宽和高
             MarginLayoutParams marginLayoutParams = (MarginLayoutParams) child.getLayoutParams();
             int childWidth = child.getMeasuredWidth() + marginLayoutParams.rightMargin + marginLayoutParams.leftMargin;
@@ -102,6 +104,9 @@ public class MyFlowLayout extends ViewGroup
 
     }
 
+
+
+
     /**
      * 由于控件要后移和换行，所以我们要标记当前控件的left坐标和top坐标
      */
@@ -111,7 +116,7 @@ public class MyFlowLayout extends ViewGroup
         int count = getChildCount();
         int lineWidth = 0;      //累加当前行的行款
         int lineHeight = 0;     //当前行的行高
-        int top = 0, left = 0;   //当前坐标的top坐标和left坐标
+        int top = 0, left = 0;  //当前坐标的top坐标和left坐标
         //计算每个空间的top和left左边后调用lauout()来布局每个子空间
         for (int i = 0; i < count; i++)
         {

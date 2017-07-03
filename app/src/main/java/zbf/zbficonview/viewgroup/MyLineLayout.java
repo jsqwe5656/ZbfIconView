@@ -71,6 +71,7 @@ public class MyLineLayout extends ViewGroup
         {
             //测量子空间
             View child = getChildAt(i);
+            //在onMeasure()之后才能调用getMeasuredWidth（）获得值；同样，只有调用onLayout()后，getWidth()才能获取值
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
 
             //获取child对应的 layoutParams实例 并将其强转成MarginlayoutParams
