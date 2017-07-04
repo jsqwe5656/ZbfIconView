@@ -5,13 +5,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import zbf.zbficonview.WaterFallLayoutParams;
+
 /**
  * 实现瀑布流的布局
  * Created by zbf on 2017/7/3.
  */
 public class WaterFallLayout extends ViewGroup
 {
-    private int columns = 3;            //指定列数
+    private int columns = 6;            //指定列数
     private int hSpace = 20;            //每个图片间的水平间距
     private int vSpace = 20;            //垂直间距
     private int childWidth = 0;         //当前每个图片的宽度
@@ -35,13 +37,29 @@ public class WaterFallLayout extends ViewGroup
     }
 
     @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs)
+    {
+        return new zbf.zbficonview.WaterFallLayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected LayoutParams generateLayoutParams(LayoutParams p)
+    {
+        return new WaterFallLayoutParams(p);
+    }
+
+    @Override
+    protected LayoutParams generateDefaultLayoutParams()
+    {
+        return new WaterFallLayoutParams(WaterFallLayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int measureWidth = MeasureSpec.getSize(widthMeasureSpec);
-        int measureHeight = MeasureSpec.getSize(heightMeasureSpec);
         int measureWidthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int measureHeightMode = MeasureSpec.getMode(heightMeasureSpec);
         //让每个子控件先测量自己
         measureChildren(widthMeasureSpec, heightMeasureSpec);
         //根据总宽度减去总间距得到的就是所有子控件的总宽度和，然后除以列数，就得到了每个item的宽度
@@ -64,6 +82,13 @@ public class WaterFallLayout extends ViewGroup
             int childHeight = child.getMeasuredHeight() * childWidth / child.getMeasuredWidth();
             //得带最短列
             int minColum = getMinHeightColum();
+
+            WaterFallLayoutParams mParams = (WaterFallLayoutParams) child.getLayoutParams();
+            mParams.left = minColum * (childWidth + hSpace);
+            mParams.top = top[minColum];
+            mParams.right = mParams.left + childWidth;
+            mParams.bottom = mParams.top + childHeight;
+
             top[minColum] += vSpace + childHeight;
         }
         int wrapHeight;
@@ -80,7 +105,10 @@ public class WaterFallLayout extends ViewGroup
         for (int i = 0; i < childCount; i++)
         {
             View child = getChildAt(i);
-            //得到当前要拜访图片的高度
+            WaterFallLayoutParams mParams = (WaterFallLayoutParams) child.getLayoutParams();
+
+            child.layout(mParams.left, mParams.top, mParams.right, mParams.bottom);
+/*            //得到当前要拜访图片的高度
             int childHeight = child.getMeasuredHeight() * childWidth / child.getMeasuredWidth();
             //得到最短列
             int minColum = getMinHeightColum();
@@ -89,8 +117,14 @@ public class WaterFallLayout extends ViewGroup
             int tright = tleft + childWidth;
             int tbottom = ttop + childHeight;
             top[minColum] += vSpace + childHeight;
-            child.layout(tleft,ttop,tright,tbottom);
+            child.layout(tleft, ttop, tright, tbottom);*/
         }
+    }
+
+    @Override
+    protected boolean checkLayoutParams(LayoutParams p)
+    {
+        return p instanceof WaterFallLayoutParams;
     }
 
     /**
@@ -136,8 +170,9 @@ public class WaterFallLayout extends ViewGroup
         return maxHeight;
     }
 
-    public interface OnItemClickListener{
-        void onItemClick(View v,int index);
+    public interface OnItemClickListener
+    {
+        void onItemClick(View v, int index);
     }
 
     /**
@@ -145,7 +180,7 @@ public class WaterFallLayout extends ViewGroup
      */
     public void setOnItemClickListener(final OnItemClickListener listener)
     {
-        for (int i = 0;i<getChildCount();i++)
+        for (int i = 0; i < getChildCount(); i++)
         {
             final int index = i;
             View view = getChildAt(i);
@@ -154,7 +189,7 @@ public class WaterFallLayout extends ViewGroup
                 @Override
                 public void onClick(View v)
                 {
-                    listener.onItemClick(v,index);
+                    listener.onItemClick(v, index);
                 }
             });
         }
